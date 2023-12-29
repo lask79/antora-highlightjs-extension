@@ -214,6 +214,8 @@ All generated files are first stored in .cache/antora-highlightjs-extension and 
 The following files are generated in .cache/antora-highlightjs-extension:
 
 * css/highlightjs-extension.css
+* js/vendor/highlight.bundle.js
+* partials/highlghtjs-styles.hbs
 
 .css/highlightjs-extension.css
 [source,css]
