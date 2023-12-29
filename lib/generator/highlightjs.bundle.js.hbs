@@ -1,0 +1,15 @@
+;(function () {
+  'use strict'
+
+  const hljs = require('highlight.js/lib/highlight')
+{{#each languages}}
+  hljs.registerLanguage('{{this.name}}', require('{{this.path}}'))
+{{/each}}
+
+  ;[].slice.call(document.querySelectorAll('pre code.hljs[data-lang]')).forEach(function (node) {
+    hljs.highlightBlock(node)
+  })
+
+  global.hljs = hljs
+
+})()

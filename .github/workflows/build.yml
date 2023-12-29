@@ -1,0 +1,64 @@
+name: Build and test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  issues: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  build-with-node:
+    runs-on: ubuntu-latest
+
+    env:
+      CI: true
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '16'
+
+    - name: Install dependencies with npm
+      run: npm install
+
+    - name: Run build script with npm
+      run: npm run build
+
+    - name: Dir
+      run: ls -la; pwd
+
+    - name: Run tests
+      run: npx mocha --verbose
+
+    - name: Show results
+      run: cat ./reports/tests-xunit.xml
+
+    - name: Publish test results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          ./reports/tests-xunit.xml
+
+    # - name: Code Coverage Report
+    #   uses: irongut/CodeCoverageSummary@v1.3.0
+    #   with:
+    #     filename: ./reports/cobertura-coverage.xml
+    #     badge: true
+    #     fail_below_min: true
+    #     format: markdown
+    #     hide_branch_rate: false
+    #     hide_complexity: true
+    #     indicators: true
+    #     output: both
+    #     thresholds: '60 80'
+

@@ -1,0 +1,10 @@
+{
+  "eslint.format.enable": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "eslint.validate": ["javascript"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "ansible.python.interpreterPath": "/bin/python3"
+}
