@@ -129,6 +129,8 @@ antora:
         theme: "minimal" # default: "default"
 ----
 
+=== Overview
+
 [%header,cols="1s,2a"]
 |===
 |Configuration key | Details
@@ -140,29 +142,22 @@ If set to `true` the extension will throw an exception when a language is used t
 Otherwise it will only log a warning message.
 
 |languages
-|Default: `[]` => automatic
+|Default: `[]` => `automatic`
 
 If empty that indicates that the languages should be automatically detected.
 When defined it will use the defined languages and ignore the used languages.
 It will also fail when a used language is not defined in the languages list when `fail_on_unsupported_language` is set to `true`.
 
 |style
-|Default: `default` +
+|Default: `default`
 
-This defines the highlight.js style that should be used. +
+This defines the highlight.js style that should be used.
 
 * List of supported styles: https://github.com/highlightjs/highlight.js/tree/9-18-stable/src/styles[Here].
 * Previews: https://highlightjs.org/examples[Here]
 
 |alias
-|Default: when not set the following aliases are used: +
-[source,yaml]
-----
-alias:
-  plaintext: ['txt', 'text']
-  shell: ['bash', 'sh', 'console']
-  javascript: ['js']
-----
+|Default: when not set the following aliases are used:
 
 Those aliases are used to map the language names that are used in the source blocks to the language names that are supported by highlight.js.
 
@@ -174,10 +169,22 @@ When set to `true` it will add the highlight.js treeview language and style. On 
 |treeview/theme
 |Default: `default`
 
-The highlight.js treeview theme that should be used. Currently we support default and minimal.
+The highlight.js treeview theme that should be used. Currently we support `default` and `minimal`.
 More information can be found in the {highlightjs-treeview} project.
+More configuration options will be added in the future.
 
 |===
+
+=== Examples
+
+.Setting alias for languages
+[source,yaml]
+----
+alias:
+  plaintext: ['txt', 'text']
+  shell: ['bash', 'sh', 'console']
+  javascript: ['js']
+----
 
 == How it works
 
